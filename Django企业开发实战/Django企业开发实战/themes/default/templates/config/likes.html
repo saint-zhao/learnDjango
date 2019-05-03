@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+友情链接
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">名称</th>
+            <th class="col">网址</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for like in likes %}
+            <tr>
+                <td scope="row">{{ forloop.counter }}</td>
+                <td>{{ like.title }}</td>
+                <td><a href="{{ like.href }}">{{ like.href }}</a></td>
+            </tr>
+    </tbody>
+</table>
+{% endblock %}
