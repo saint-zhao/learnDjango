@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <title>博客主题-Sanit</title>
+    <style>
+        .post {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container head">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'index' %}">首页</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Python</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Django实战</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tornado</a>
+                    </li>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="搜索" aria-label="搜索">
+                    <button class="btn btn-outline-success" type="submit">搜索</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="jumbotron">
+            <h1 class="display-4">博客系统</h1>
+            <P class="lead">基于多人的博客系统</P>
+        </div>
+    </div>
+
+    <div class="container main">
+        <div class="row">
+            <div class="col-9 post-list">
+                <div class="card post">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">这里是标题</a></h5>
+                        <span class="card-link">作者:<a href="#">saint</a></span>
+                        <span class="card-link">分类:<a href="#">Python</a></span>
+                        <span class="card-link">标签:
+                            <a href="#">Python</a>
+                            <a href="#">Django</a>
+                        </span>
+                        <p class="card-text">
+                            这是这篇文章的概述，详细内容请点击<a href="#">完整内容</a>
+                        </p>
+                    </div>
+                </div>
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
+                    {% endif %}
+
+                    Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">下一页</a>
+                    {% endif %}
+            </div>
+
+            <div class="col-3">
+                <div class="card sidebar">
+                    <div class="card-body">
+                        <h4>关于博主</h4>
+                        <p>
+                            网名：saint，Python爱好者
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <hr />
+                <nav class="nav category">
+                    <a href="#" class="nav-link">读书</a>
+                    <a href="#" class="nav-link">产品</a>
+                    <a href="#" class="nav-link">经历</a>
+                </nav>
+            </div>
+            <div class="container power">
+                <span class="text-muted">Power_by_saintzhao</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

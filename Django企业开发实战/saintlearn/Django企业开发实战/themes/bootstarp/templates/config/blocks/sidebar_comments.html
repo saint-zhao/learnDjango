@@ -1,0 +1,8 @@
+<ul>
+    {% for comment in comments %}
+    <li><a href="{% url 'post_detail' comment.target_id %}">{{ comment.target.title }}</a></li>
+    {{ comment.nickname }}:{{ comment.content }}
+    {% empty %}
+    <P>没有任何文章</P>
+    {% endfor %}
+</ul>
